@@ -5,4 +5,5 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return index.html
+#    return /static/index.html
+    return "Hello again"
