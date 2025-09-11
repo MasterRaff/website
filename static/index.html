@@ -1,66 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+      color: #e5e7eb;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #1f2937;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #cbd5e1;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #6366f1;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      main {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      main {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    section {
+      background: #2d3748;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+    }
+
+    section h2 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    section p {
+      color: #9ca3af;
+      line-height: 1.4;
+    }
+
+    .tool-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem; /* adds spacing between buttons */
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.75rem;
+      background: #4f46e5;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    button:hover {
+      background: #6366f1;
+      transform: scale(1.02);
+    }
+
+    footer {
+      background: #1f2937;
+      text-align: center;
+      padding: 1rem;
+      color: #9ca3af;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans">
+<body>
 
   <!-- Header -->
-  <header class="bg-gray-800 shadow-lg p-6 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">My Dashboard</h1>
+  <header>
+    <h1>My Dashboard</h1>
     <nav>
-      <ul class="flex space-x-6">
-        <li><a href="#university" class="hover:text-indigo-400">University</a></li>
-        <li><a href="#spotify" class="hover:text-indigo-400">Spotify</a></li>
-        <li><a href="#other" class="hover:text-indigo-400">Other APIs</a></li>
+      <ul>
+        <li><a href="#university">University</a></li>
+        <li><a href="#spotify">YU Canvas</a></li>
+        <li><a href="#other">Other APIs</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Main Grid -->
-  <main class="p-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-
+  <main>
     <!-- University Widget -->
-    <section id="university" class="bg-gray-800 p-6 rounded-xl shadow">
-      <h2 class="text-xl font-bold mb-4">University Info</h2>
-      <div id="university-content" class="text-gray-400">
+    <section id="university">
+      <h2>University Info</h2>
+      <div id="university-content">
         <p>Upcoming assignments, grades, announcements…</p>
-        <!-- Later this can pull from FastAPI -->
       </div>
     </section>
 
-    <!-- Spotify Widget -->
-    <section id="spotify" class="bg-gray-800 p-6 rounded-xl shadow">
-      <h2 class="text-xl font-bold mb-4">Spotify Now Playing</h2>
-      <div id="spotify-content" class="text-gray-400">
-        <p>Currently playing: Nothing</p>
-        <!-- Later this can show song info, album art, controls -->
+    <!-- YU Canvas Widget -->
+    <section id="spotify">
+      <h2>YU Canvas</h2>
+      <div id="spotify-content">
+        <p>Currently showing: Nothing</p>
       </div>
     </section>
 
     <!-- Other APIs Widget -->
-    <section id="other" class="bg-gray-800 p-6 rounded-xl shadow">
-      <h2 class="text-xl font-bold mb-4">Other Tools</h2>
-      <div class="space-y-4">
-        <button class="w-full bg-indigo-600 px-4 py-2 rounded hover:bg-indigo-500">
-          Weather
-        </button>
-        <button class="w-full bg-indigo-600 px-4 py-2 rounded hover:bg-indigo-500">
-          Lyrics
-        </button>
-        <button class="w-full bg-indigo-600 px-4 py-2 rounded hover:bg-indigo-500">
-          Notes
-        </button>
+    <section id="other">
+      <h2>Other Tools</h2>
+      <div class="tool-buttons">
+        <button>Weather</button>
+        <a href="https://open.spotify.com/playlist/54V9kPyFF7JpiSTazgznSo?si=WDvjVzFfSO6tjUpZLA_qWg" target="_blank">
+          <button>Spotify</button>
+        </a>
+        <button>Notes</button>
       </div>
     </section>
-
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 py-6 text-center text-gray-500">
+  <footer>
     © 2025 My Personal Hub
   </footer>
 
