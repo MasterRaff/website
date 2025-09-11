@@ -1,11 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Website!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-	<h1>Hello World!</h1>
-	<p>Website running on server! Likely being accesssed with an SSH SOCKS5 tunnel!</p>
+<body class="bg-gray-900 text-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="bg-gray-800 shadow-lg p-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">My Dashboard</h1>
+    <nav>
+      <ul class="flex space-x-6">
+        <li><a href="#university" class="hover:text-indigo-400">University</a></li>
+        <li><a href="#spotify" class="hover:text-indigo-400">Spotify</a></li>
+        <li><a href="#other" class="hover:text-indigo-400">Other APIs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Grid -->
+  <main class="p-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+    <!-- University Widget -->
+    <section id="university" class="bg-gray-800 p-6 rounded-xl shadow">
+      <h2 class="text-xl font-bold mb-4">University Info</h2>
+      <div id="university-content" class="text-gray-400">
+        <p>Upcoming assignments, grades, announcements…</p>
+        <!-- Later this can pull from FastAPI -->
+      </div>
+    </section>
+
+    <!-- Spotify Widget -->
+    <section id="spotify" class="bg-gray-800 p-6 rounded-xl shadow">
+      <h2 class="text-xl font-bold mb-4">Spotify Now Playing</h2>
+      <div id="spotify-content" class="text-gray-400">
+        <p>Currently playing: Nothing</p>
+        <!-- Later this can show song info, album art, controls -->
+      </div>
+    </section>
+
+    <!-- Other APIs Widget -->
+    <section id="other" class="bg-gray-800 p-6 rounded-xl shadow">
+      <h2 class="text-xl font-bold mb-4">Other Tools</h2>
+      <div class="space-y-4">
+        <button class="w-full bg-indigo-600 px-4 py-2 rounded hover:bg-indigo-500">
+          Weather
+        </button>
+        <button class="w-full bg-indigo-600 px-4 py-2 rounded hover:bg-indigo-500">
+          Lyrics
+        </button>
+        <button class="w-full bg-indigo-600 px-4 py-2 rounded hover:bg-indigo-500">
+          Notes
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 py-6 text-center text-gray-500">
+    © 2025 My Personal Hub
+  </footer>
+
 </body>
 </html>
 
